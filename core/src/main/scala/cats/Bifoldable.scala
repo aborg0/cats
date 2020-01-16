@@ -7,7 +7,13 @@ import simulacrum.typeclass
  */
 @typeclass trait Bifoldable[F[_, _]] { self =>
 
-  /** Collapse the structure with a left-associative function */
+  /** Collapse the structure with a left-associative functions (first concatenate, second repeat)
+   * {{{
+   * scala> import cats.Bifoldable, cats.implicits._
+   * scala> Bifoldable[Tuple2].bifoldLeft(("hello ", 2), "aloha ")((s, t) => s"$t$s", (s, i) => s * i)
+   * res0: String = "hello aloha hello aloha "
+   * }}}
+   */
   def bifoldLeft[A, B, C](fab: F[A, B], c: C)(f: (C, A) => C, g: (C, B) => C): C
 
   /** Collapse the structure with a right-associative function */
