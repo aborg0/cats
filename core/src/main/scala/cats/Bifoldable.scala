@@ -73,7 +73,7 @@ import simulacrum.typeclass
    *
    * `Bifoldable[Either].compose[Either]` can extract the inner `Either`:
    *
-   * scala> Bifoldable[Either].compose[Either].bifold[String, Int](Right[Either[String, Int], String Either Int](Left("Hello")))
+   * scala> Bifoldable[Either].compose[Either].bifold[String, Int](Right[Either[String, Int], Either[String, Int]](Left("Hello")))
    * res1: (String, Int) = (Hello,0)
    *
    * `Bifoldable[Either].compose[Tuple2]` can also extract the inner `Tuple2`.
